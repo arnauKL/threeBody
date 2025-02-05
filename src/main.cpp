@@ -3,7 +3,11 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(conf::maxScreenWidth, conf::maxScreenHeight), "Three Body");
+
+    sf::ContextSettings settings;
+    settings.antialiasingLevel = 0; // antialiasing
+
+    sf::RenderWindow window(sf::VideoMode(conf::maxScreenWidth, conf::maxScreenHeight), "Three Body", sf::Style::Default, settings);
     window.setFramerateLimit(60);
 
     ObjectsManager objects_manager = ObjectsManager(conf::nBodies);
@@ -23,15 +27,16 @@ int main()
                     window.close();
             }
         }
+
         // UPDATE
 
-        auto mousePosition = static_cast<sf::Vector2f>(sf::Vector2i(sf::Mouse::getPosition(window)));
-        objects_manager.addAccel(mousePosition);
+        //auto mousePosition = static_cast<sf::Vector2f>(sf::Vector2i(sf::Mouse::getPosition(window)));
+        //objects_manager.addAccel(mousePosition);
         objects_manager.update();
 
         // RENDER
-        //objects_manager.draw(window);
-        objects_manager.drawMesh(window);
+        objects_manager.draw(window);
+        //objects_manager.drawMesh(window);
         window.display();
         window.clear(sf::Color::Black);
     }

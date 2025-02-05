@@ -16,9 +16,9 @@ public:
     explicit ObjectsManager(const int& count);
 
     void update();
-    void addAccel(sf::Vector2f source);
+    void addAccel(sf::Vector2<double> source);
 
-    void draw(sf::RenderWindow& window);
+    void draw(sf::RenderWindow& window) const;
     void drawMesh(sf::RenderWindow& window);
 
 private:

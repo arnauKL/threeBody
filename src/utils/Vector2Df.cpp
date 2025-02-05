@@ -15,3 +15,11 @@ void Vector2Df::setMagnitude(const float magnitude) {
     x *= scale;
     y *= scale;
 }
+
+void Vector2Df::limit (const float maxMagnitude)
+{
+    if (getMagnitude() > maxMagnitude)
+    {
+        setMagnitude(maxMagnitude);
+    }
+}
